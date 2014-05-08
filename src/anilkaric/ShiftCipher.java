@@ -8,4 +8,6 @@ public class ShiftCipher {
 	
 	iwas
 
+	iwas
+	iwas
 }
