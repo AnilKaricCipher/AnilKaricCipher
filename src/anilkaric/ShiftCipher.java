@@ -10,4 +10,6 @@ public class ShiftCipher {
 	
 	cool rohat
 
+	iwas
+	iwas
 }
