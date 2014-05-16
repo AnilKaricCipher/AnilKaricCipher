@@ -5,7 +5,7 @@ package anilkaric;
  * @version 2014-04-08
  *
  */
-public interface Cipher {
+public interface Cipher  {
 	/**
 	 * Die Methode encrypt die verschlüsselt
 	 * @param text der uebergebene String zum Verschlüsseln
