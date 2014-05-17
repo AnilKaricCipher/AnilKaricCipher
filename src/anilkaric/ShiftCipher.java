@@ -13,7 +13,7 @@ public class ShiftCipher extends MonoAlphabeticCipher {
 
 	public void setShiftAmount(int verschiebung) throws MyException{
 		if(verschiebung <=30 && verschiebung >=0){
-			String alph=this.getSecretAlphabet();
+			String alph="abcdefghijklmnopqrstuvwxyzäöüß";
 			String newalph="";
 			char[] veralph=new char[30];
 			int x = 0;
@@ -34,6 +34,7 @@ public class ShiftCipher extends MonoAlphabeticCipher {
 			newalph+=veralph[k];
 		}
 		super.setSecretAlphabet(newalph);
+		
 		}else{
 			throw new MyException("Bitte einen Wert von 0 bis 30 nehmen");
 		}

@@ -69,7 +69,6 @@ public class CipherController implements ActionListener,ItemListener {
 				case "SubstitutionCipher":
 					subst.setSecretAlphabet(this.view.getKeyWordGeheimAlphabet());
 					this.ausgab = subst.decrypt(this.view.getEingabe());
-					//refersch!
 					break;
 				case "ShiftCipher":
 					shift.setShiftAmount(ver);
@@ -113,8 +112,9 @@ public class CipherController implements ActionListener,ItemListener {
 			}
 			this.view.refresh(load,ausgab);
 				break;
-			case "ver":
+			case "versch":
 				ver = Integer.parseInt((String)a.getSelectedItem());
+				System.out.println(ver);
 				break;
 			}
 
