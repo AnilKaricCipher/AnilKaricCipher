@@ -15,6 +15,7 @@ import anilkaric.MyException;
 import anilkaric.ShiftCipher;
 import anilkaric.SubstitutionCipher;
 import anilkaric.TranspositionCipher;
+import anilkaric.gui.CipherView;
 
 public class CipherController implements ActionListener,ItemListener {
 
