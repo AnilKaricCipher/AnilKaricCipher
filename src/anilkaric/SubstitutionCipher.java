@@ -24,5 +24,5 @@ public class SubstitutionCipher extends MonoAlphabeticCipher {
 		//Methode von Superklasse wird aufgerufen
 		super.setSecretAlphabet(secretAlphabet);
 	}
-	
+
 }

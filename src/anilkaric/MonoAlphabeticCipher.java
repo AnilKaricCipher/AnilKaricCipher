@@ -67,7 +67,7 @@ public class MonoAlphabeticCipher implements Cipher {
 		}
 		//der verschlüsselte String wird zurückgegeben
 		return versch;
-		
+
 	}
 	/**
 	 * Die methode decrypt zum entschlüsseln

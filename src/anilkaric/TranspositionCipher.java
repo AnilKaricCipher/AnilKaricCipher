@@ -11,11 +11,11 @@ public class TranspositionCipher implements Cipher {
 	public TranspositionCipher(int transpositionLevel) throws MyException{
 		this.setTranspositionLevel(transpositionLevel);
 	}
-/**
- * Die Setter-Methode von TranspositionCipher
- * @param level	das gewünschte Transpositionslevel
- * @throws MyException	wird geworfen wenn das transpositionslevel ungültig ist
- */
+	/**
+	 * Die Setter-Methode von TranspositionCipher
+	 * @param level	das gewünschte Transpositionslevel
+	 * @throws MyException	wird geworfen wenn das transpositionslevel ungültig ist
+	 */
 	public void setTranspositionLevel(int level) throws MyException{
 		//wenn das transpositionslevel kleiner gleich 1 ist wird die exception geworfen
 		if(level<=1){

@@ -16,9 +16,13 @@ import anilkaric.ShiftCipher;
 import anilkaric.SubstitutionCipher;
 import anilkaric.TranspositionCipher;
 import anilkaric.gui.CipherView;
-
+/**
+ * Controller-Klasse für Cipher
+ * @author Adin Karic
+ * @version 2014-05-17
+ */
 public class CipherController implements ActionListener,ItemListener {
-
+	//Attribute mit den verschiedenen Cipher-Arten
 	private TranspositionCipher trans;
 	private SubstitutionCipher subst;
 	private ShiftCipher shift;
@@ -28,20 +32,29 @@ public class CipherController implements ActionListener,ItemListener {
 	private String meth="SubstitutionCipher";
 	private int ver;
 	private int load;
-
+	/**
+	 * Konstruktor des Controllers
+	 * @throws MyException
+	 */
 	public CipherController() throws MyException{
+		//Attribute werden initialisert
 		trans = new TranspositionCipher(2);
 		subst = new SubstitutionCipher("ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜß");
 		shift = new ShiftCipher(1);
 		key = new KeyWordCipher("WORLD");
 		view = new CipherView(this);
 	}
+	/**
+	 * Die methode die ausgeführt wird wenn einer der beiden Jbuttons geklickt wird
+	 */
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		JButton b = (JButton)arg0.getSource();
 		try{
 			switch(b.getActionCommand()){
+			//wenn es der verschlüsseln button ist
 			case "ver":
+				//Je nachdem welche methode in der ComboBox ausgewählt ist wird eine andere encrypt methode verwendet und in die ausgabe gespeichert
 				switch(meth){
 				case "SubstitutionCipher":
 					subst.setSecretAlphabet(this.view.getKeyWordGeheimAlphabet());
@@ -50,21 +63,23 @@ public class CipherController implements ActionListener,ItemListener {
 				case "ShiftCipher":
 					shift.setShiftAmount(ver);
 					this.ausgab = shift.encrypt(this.view.getEingabe());
-					
+
 					break;
 				case "KeywordCipher":
 					key.setKeyword(this.view.getKeyWordGeheimAlphabet());
 					this.ausgab = key.encrypt(this.view.getEingabe());
-					
+
 					break;
 				case "TranspositionCipher":
 					trans.setTranspositionLevel(Integer.parseInt(this.view.getLevel()));
 					this.ausgab = trans.encrypt(this.view.getEingabe());
-					
+
 					break;
 				}
 				break;
+				//wenn der entschlüsseln JButton geklickt wird
 			case "ent":
+				//je nachdem welche Chipher Art in der ComboBox ausgewählt wurde wird eine andere decrypt methode verwendet
 				switch(meth){
 				case "SubstitutionCipher":
 					subst.setSecretAlphabet(this.view.getKeyWordGeheimAlphabet());
@@ -88,14 +103,20 @@ public class CipherController implements ActionListener,ItemListener {
 		}catch(MyException e){
 			load=4;
 		}
+		//die refresh methode der view-Klasse wird ausgeführt
 		this.view.refresh(load,ausgab);
-		}
-		@Override
-		public void itemStateChanged(ItemEvent arg0) {
-			JComboBox a = (JComboBox) arg0.getSource();
-			switch(a.getActionCommand()){
-			case "vmethode":
-				meth =(String) a.getSelectedItem();
+	}
+	/**
+	 * Die Methode die ausgeführt wird wenn der Benutzer die Auswahl einer ComboBox ändert
+	 */
+	@Override
+	public void itemStateChanged(ItemEvent arg0) {
+		JComboBox a = (JComboBox) arg0.getSource();
+		//Je nachdem ob entweder dei ComboBox mit den Verschlüsselungsarten oder die mit den shiftStufen ausgewählt wird
+		switch(a.getActionCommand()){
+		case "vmethode":
+			meth =(String) a.getSelectedItem();
+			//abhängig von der Cipher-Art werden bestimmte Werte an load übergeben welches dann später an refresh übergeben wird um bestimme elemente zu enablen oder nicht
 			switch(meth){
 			case "SubstitutionCipher":
 				load=1;
@@ -111,14 +132,16 @@ public class CipherController implements ActionListener,ItemListener {
 				break;
 			}
 			this.view.refresh(load,ausgab);
-				break;
-			case "versch":
-				ver = Integer.parseInt((String)a.getSelectedItem());
-				System.out.println(ver);
-				break;
-			}
-
-
-
+			break;
+			//
+		case "versch":
+			//shiftStufe wird gespeichert
+			ver = Integer.parseInt((String)a.getSelectedItem());
+			System.out.println(ver);
+			break;
 		}
+
+
+
 	}
+}
