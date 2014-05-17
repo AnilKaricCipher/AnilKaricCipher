@@ -23,7 +23,7 @@ public class CipherView extends JFrame {
 		ausgabe.setEditable(false);
 		keyword = new JTextField(6);
 		tlevel = new JTextField(3);
-		String[] meth = {"SubstitionCipher","ShiftCipher","KeywordCipher","TranspositionCipher"};
+		String[] meth = {"SubstitutionCipher","ShiftCipher","KeywordCipher","TranspositionCipher"};
 		vmethode = new JComboBox<String>(meth);
 		vmethode.setActionCommand("vmethode");
 		vmethode.addItemListener(this.c);
@@ -39,6 +39,11 @@ public class CipherView extends JFrame {
 		ent = new JButton("Entschlüsseln");
 		ver.setActionCommand("ver");
 		ent.setActionCommand("ent");
+		ver.addActionListener(this.c);
+		ent.addActionListener(this.c);
+		this.tlevel.setEditable(false);
+		this.verschiebung.setEnabled(false);
+		this.keyword.setEditable(true);
 		JPanel p1 = new JPanel();
 		p1.setLayout(new GridLayout(9,1));
 		JPanel p2 = new JPanel();
@@ -67,7 +72,35 @@ public class CipherView extends JFrame {
 		
 	}
 	
-	public void refresh(int a){
-		
+	public void refresh(int a,String ausgab){
+		switch(a){
+		case 1:
+			this.tlevel.setEditable(false);
+			this.verschiebung.setEnabled(false);
+			this.keyword.setEditable(true);
+			break;
+		case 2:
+			this.tlevel.setEditable(false);
+			this.keyword.setEditable(false);
+			this.verschiebung.setEnabled(true);
+			break;
+		case 3:
+			this.verschiebung.setEnabled(false);
+			this.keyword.setEditable(false);
+			this.tlevel.setEditable(true);
+			break;
+		case 4:
+			JOptionPane.showMessageDialog(null,"Ein Fehler ist aufgetreten!\nBitte überprüfen Sie ihre Eingaben!");
+		}
+		this.ausgabe.setText(ausgab);
+	}
+	public String getKeyWordGeheimAlphabet(){
+		return this.keyword.getText();
+	}
+	public String getLevel(){
+		return this.tlevel.getText();
+	}
+	public String getEingabe(){
+		return eingabe.getText();
 	}
 }

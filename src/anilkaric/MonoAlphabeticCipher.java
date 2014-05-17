@@ -27,7 +27,7 @@ public class MonoAlphabeticCipher implements Cipher {
 	 * @param text das neue secretAlphabet
 	 * @throws MyException
 	 */
-	protected void setSecretAlphabet(String text) throws MyException {
+	public void setSecretAlphabet(String text) throws MyException {
 		//wenn das neue secretalphabet 30 zeichen hat
 		if(text.length()==30){
 			this.secretAlphabet=text;
