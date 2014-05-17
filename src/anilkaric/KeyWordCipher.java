@@ -12,7 +12,6 @@ public class KeyWordCipher extends MonoAlphabeticCipher {
 		public void setKeyword(String keyword) throws MyException{
 			//Es duerfen keine Buchstaben doppelt vorkommen im Keyword
 			char[] alph = new char[30];
-			boolean wF=false;
 			String gehalph="";
 			for(int i = 0; i< this.getSecretAlphabet().length();i++){
 				alph[i]=this.getSecretAlphabet().charAt(i);
