@@ -11,6 +11,7 @@ public interface Cipher  {
 	 * @param text der uebergebene String zum Verschlüsseln
 	 * @return der verschlüsselte String
 	 */
+	
 	public String encrypt(String text);
 	/**
 	 * Die Methode decrypt die entschlüsselt
